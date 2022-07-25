@@ -1,0 +1,58 @@
+﻿@page
+@model HeTest.Pages.Cars.ManageCarModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	ViewData["Title"] = "HE - Finding a Car";
+}
+
+<div class="text-center">
+	<h2>Cars Management</h2>
+	<form method="post">
+
+		<input asp-for="car.Id" value="@Model.car?.Id" type="hidden" />
+		Make:
+		<input asp-for="car.Make" value="@Model.car?.Make" />
+		<br />
+		Model:
+		<input asp-for="car.Model" value="@Model.car?.Model" />
+		<br />
+		Year:
+		<input asp-for="car.Year" value="@Model.car?.Year" />
+		<br />
+		Doors:
+		<input asp-for="car.Doors" value="@Model.car?.Doors" />
+		<br />
+		Color:
+		<input asp-for="car.Color" value="@Model.car?.Color" />
+		<br />
+		Price:
+		<input asp-for="car.Price" value="@Model.car?.Price" />
+
+		<hr />
+
+		<button asp-page-handler="Find">Find</button>
+		<br />
+		<hr />
+		@if (Model.operation.Equals(Operation.Read))
+		{
+			if (Model.car != null)
+			{
+				<button asp-page-handler="Update" asp-route-id="@Model.car">Update</button>
+				<button asp-page-handler="Delete" asp-route-id="@Model.car.Id">Delete</button>
+			}
+			else
+			{
+				<p>Nothing found!</p>
+			}
+		}
+		else if (Model.operation.Equals(Operation.Delete))
+		{
+			<p>Car deleted!</p>
+		}
+		else
+		{
+			<p>Car updated!</p>
+		}
+
+	</form>
+</div>

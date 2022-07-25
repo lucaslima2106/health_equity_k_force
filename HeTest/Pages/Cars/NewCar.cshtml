@@ -1,0 +1,40 @@
+﻿@page
+@model HeTest.Pages.Cars.NewCarModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	ViewData["Title"] = "HE - Creating New Car";
+}
+
+<div class="text-center">
+	<h2>Add a Car</h2>
+	<form method="post">
+
+		Make:
+		<input asp-for="car.Make" />
+		<br />
+		Model:
+		<input asp-for="car.Model" />
+		<br />
+		Year:
+		<input asp-for="car.Year" />
+		<br />
+		Doors:
+		<input asp-for="car.Doors" />
+		<br />
+		Color:
+		<input asp-for="car.Color" />
+		<br />
+		Price:
+		<input asp-for="car.Price" />
+
+		<hr />
+
+		<input type="submit" value="Add" />
+
+		@if (Model.car?.Id > 0)
+		{
+			<p>Car added successfully!</p>
+		}
+
+	</form>
+</div>
